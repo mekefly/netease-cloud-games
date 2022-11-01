@@ -1,48 +1,61 @@
 <script lang="ts" setup>
-import { computed, type StyleValue } from "vue";
+import { useSearchValue } from "@/views/SearchView";
+import { useRouter } from "vue-router";
 import IconSearch from "./icons/IconSearch.vue";
 import SearchInput from "./SearchInput.vue";
+import {
+  getDefaultIndex,
+  searchNumber,
+  useAutoPushRouter,
+  useIsSearchPage,
+  useRouterList,
+  useSlidingBlockStyle,
+} from "./SubNav";
 
-const activeIndex = $ref(0);
-const list = $ref([
-  { to: "/mobile", name: "手机游戏" },
-  { to: "/pc", name: "PC游戏" },
-  { to: "/high", name: "手游高配（桌面板）" },
-  { to: "/other", name: "更多游戏" },
-]);
-let itemsEls = $ref([] as null[] | HTMLLIElement[]);
-let slidingBlockStyle = computed(() => {
-  const activeEl = itemsEls[activeIndex];
-
-  if (!activeEl) return {};
-  const activeElRect = activeEl.getBoundingClientRect();
-
-  return {
-    left: `${activeEl.offsetLeft}px`,
-    width: `${activeElRect.width}px`,
-  } as StyleValue;
-});
 const color = "#03c47e";
+
+const isSearchPage = $(useIsSearchPage());
+const routeList = $(useRouterList());
+const activeIndex = $ref(getDefaultIndex($$(routeList)));
+const activeLink = $computed(() => routeList[activeIndex]?.to);
+let itemsEls = $ref([] as null[] | HTMLLIElement[]);
+
+let slidingBlockStyle = useSlidingBlockStyle($$(itemsEls), $$(activeIndex));
+
+useAutoPushRouter($$(activeLink));
+const router = useRouter();
+
+let searchValue = useSearchValue();
 </script>
 
 <template>
-  <div class="flex justify-between">
+  <div class="flex justify-between items-center cursor-pointer">
+    <div
+      v-if="isSearchPage"
+      @click="
+        () => {
+          router.back();
+        }
+      "
+    >
+      <span>{{ "<" }}</span>
+      返回
+      <span v-if="searchNumber && !!searchValue">{{
+        `| 搜索结果（${searchNumber}）`
+      }}</span>
+    </div>
     <ul
-      class="flex-shrink-0 flex relative h-10 border-b border-white border-opacity-20"
+      v-if="!isSearchPage"
+      class="grid gap-3 sm:gap-4 md:gap-5 grid-rows-1 grid-flow-col flex-shrink-0 relative h-10 border-b border-white border-opacity-20"
     >
       <li
-        class="mr-4 sm:mr-5 md:mr-7 lg:mr-9"
-        v-for="(item, index) in list"
+        class=""
+        v-for="(item, index) in routeList"
         :key="item.name"
         @click="() => (activeIndex = index)"
         ref="itemsEls"
       >
-        <RouterLink
-          class="transition"
-          :class="{ 'text-white': index === activeIndex }"
-          :to="item.to"
-          >{{ item.name }}</RouterLink
-        >
+        <div class="transition">{{ item.name }}</div>
       </li>
       <div
         class="sliding-block h-[3px] absolute bottom-[-2px] rounded transition-[left,width]"
@@ -53,9 +66,12 @@ const color = "#03c47e";
       ></div>
     </ul>
     <div class="icon sm:hidden flex items-center justify-center">
-      <IconSearch class="h-6 w-6"></IconSearch>
+      <IconSearch
+        class="h-6 w-6"
+        @click="() => $router.push('/search')"
+      ></IconSearch>
     </div>
-    <SearchInput class="flex-shrink max-sm:hidden"></SearchInput>
+    <SearchInput class="flex-shrink max-sm:hidden ml-6"></SearchInput>
   </div>
 </template>
 

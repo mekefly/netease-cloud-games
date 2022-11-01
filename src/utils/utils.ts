@@ -9,3 +9,5 @@ export function getQueryVariable(variable: string): string {
   }
   return "";
 }
+
+

@@ -6,26 +6,35 @@ const router = createRouter({
     {
       path: "/",
       redirect: "/mobile",
+      component: () => import("../views/SubNavView.vue"),
+      children: [
+        {
+          path: "/mobile",
+          component: () => import("../views/MobileView.vue"),
+        },
+        {
+          path: "/pc",
+          component: () => import("../views/PcView.vue"),
+        },
+        {
+          path: "/high",
+          component: () => import("../views/HighView.vue"),
+        },
+        {
+          path: "/other",
+          component: () => import("../views/OtherView.vue"),
+        },
+
+        {
+          path: "/search",
+          component: () => import("../views/SearchView.vue"),
+        },
+      ],
     },
-    {
-      path: "/mobile",
-      component: () => import("../views/MobileView.vue"),
-    },
-    {
-      path: "/pc",
-      component: () => import("../views/PcView.vue"),
-    },
-    {
-      path: "/high",
-      component: () => import("../views/HighView.vue"),
-    },
-    {
-      path: "/other",
-      component: () => import("../views/OtherView.vue"),
-    },
+
     {
       path: "/download",
-      component: () => import("../views/Download.vue"),
+      component: () => import("../views/DownloadView.vue"),
     },
   ],
 });

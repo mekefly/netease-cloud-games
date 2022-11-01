@@ -48,7 +48,9 @@ const hotSearchList = $ref([
 </script>
 
 <template>
-  <div class="w-full absolute top-[100%] left-0 bg-color2 p-4 box-border">
+  <div
+    class="w-full absolute top-[100%] left-0 bg-color2 p-4 box-border rounded z-20 shadow-sm"
+  >
     <div class="history mb-4">
       <h4>历史记录</h4>
       <div class="flex flex-wrap mt-2">

@@ -4,10 +4,21 @@
 @tailwind components;
 @tailwind utilities;
 
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: hsla(0, 0%, 100%, 0.1);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
 body {
   --color1: #1e2831;
   --color2: #28333d;
   --color3: #304051;
+  --brand-color: #03c47e;
 
   padding: 0;
   margin: 0;

@@ -12,11 +12,10 @@ let searched = $ref(undefined as undefined | string);
 
 function handleSearch() {
   searched = searchValue;
-
-  console.log("search");
-
+  if (!searchValue) {
+    router.push(`/search`);
+  }
   router.push(`/search?key=${searchValue}`);
-  searchValue = "";
 }
 
 function handleFocus() {
@@ -24,7 +23,7 @@ function handleFocus() {
 }
 const searchDialogShow = $computed(() => focused && searchValue === "");
 let searchDialogAnimating = $ref(false);
-const searchDialogDuration = 1000;
+const searchDialogDuration = 200;
 
 let timeout = null as any;
 watch($$(searchDialogShow), () => {
