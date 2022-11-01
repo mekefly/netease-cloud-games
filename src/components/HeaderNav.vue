@@ -11,7 +11,7 @@ import HeaderMenu from "./HeaderMenu.vue";
 import HeaderNavCheckinVue from "./HeaderNavCheckin.vue";
 import HeaderNavDialog from "./HeaderNavDialog.vue";
 import HeaderNavHistoryVue from "./HeaderNavHistory.vue";
-import Menu from "./Menu.vue";
+import MenuButton from "./MenuButton.vue";
 import SearchInput from "./SearchInput.vue";
 import { default as UserSettingTopNav } from "./UserSettingTopNav.vue";
 const btnIcons = $shallowRef([
@@ -33,7 +33,7 @@ const {
   <nav
     class="flex items-center justify-between max-w-show w-full h-full px-[8%]"
   >
-    <Menu />
+    <MenuButton />
     <div class="flex items-center">
       <img :src="logImg" class="h-[30px] w-auto" alt="" />
       <HeaderMenu class="hidden md:flex" />

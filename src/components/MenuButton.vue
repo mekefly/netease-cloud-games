@@ -15,7 +15,7 @@ useAutoHideScrollbar(safeActive);
   <IconIndexHamburgerNormal class="h-[30px] md:hidden" @click="show" />
   <Teleport :to="'body'" v-if="safeActive">
     <div
-      class="fixed top-0 -left-[100%] flex flex-col h-full w-full bg-color1 overflow-y-auto z-50 md:hidden transition"
+      class="fixed top-0 -left-[100%] flex flex-col h-full w-full bg-color1 overflow-y-auto z-50 transition"
       :style="{
         transform: transitionActive ? `translateX(100%)` : '',
         transitionDuration: `${duration}ms`,

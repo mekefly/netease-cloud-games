@@ -1,46 +1,35 @@
 # netease-cloud-games
 
-This template should help get you started developing with Vue 3 in Vite.
+网易云游戏官方网站
 
-## Recommended IDE Setup
+[截图预览](https://gist.github.com/9d24420250cb509a3f71806014967bee)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## 技术
 
-## Type Support for `.vue` Imports in TS
+- vue3
+- (tailwindcss)[https://www.tailwindcss.cn/docs/border-radius#class-reference]
+- vue-router
+- ref 语法糖
+- vue-use
+- typescript
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+## 开始
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+注意：您的设备需要有 `npm`
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+1. 克隆
 
-## Customize configuration
+   > git clone `本仓库地址`
+   > cd `之前下载的目录`
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+2. 安装
 
-## Project Setup
+   > pnpm install
+   > 或
+   > npm install
 
-```sh
-pnpm install
-```
+3. 运行
 
-### Compile and Hot-Reload for Development
-
-```sh
-pnpm dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-pnpm build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-pnpm test:unit
-```
+   > pnpm dev
+   > 或
+   > npm run dev
